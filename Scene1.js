@@ -28,7 +28,7 @@ class Scene1 extends Phaser.Scene{
         }
         snake.time++
 
-        if (snake.isAlive()){
+        if (snake.isNotAlive()){
             game.destroy()
         }
         //change direction on key input

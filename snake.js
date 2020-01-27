@@ -30,7 +30,6 @@ class Snake extends Phaser.Physics.Arcade.Image{
         {
             this.body.create(x,y+20,"body")
         }
-        
         this.length++
     }
 
@@ -47,8 +46,13 @@ class Snake extends Phaser.Physics.Arcade.Image{
         this.xdir = xdir
         this.ydir = ydir
     }
-    isAlive(){
+    
+    isNotAlive(){
         if (snake.head.x >= config.width || snake.head.y >= config.height || snake.head.x < 0 || snake.head.y < 0){
+            return true
+        }
+        var hitBody = Phaser.Actions.GetFirst(this.body.getChildren(), {x:this.head.x,y:this.head.y},1)
+        if (hitBody){
             return true
         }
     }
